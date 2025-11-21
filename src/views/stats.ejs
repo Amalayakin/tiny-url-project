@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats - <%= link.code %></title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; }
+        h1 { color: #333; margin-bottom: 20px; }
+        .stat-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #ddd; }
+        .stat-label { font-weight: bold; color: #666; }
+        .stat-value { font-size: 18px; color: #007bff; margin-top: 5px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #007bff; color: white; border-radius: 4px; text-decoration: none; }
+        .back-btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">← Back to Dashboard</a>
+        
+        <h1>Short URL Stats</h1>
+
+        <div class="stat-item">
+            <div class="stat-label">Short Code:</div>
+            <div class="stat-value"><%= link.code %></div>
+        </div>
+
+        <div class="stat-item">
+            <div class="stat-label">Target URL:</div>
+            <div class="stat-value"><a href="<%= link.url %>" target="_blank"><%= link.url %></a></div>
+        </div>
+
+        <div class="stat-item">
+            <div class="stat-label">Total Clicks:</div>
+            <div class="stat-value"><%= link.clicks %></div>
+        </div>
+
+        <div class="stat-item">
+            <div class="stat-label">Last Clicked:</div>
+            <div class="stat-value"><%= link.last_clicked ? new Date(link.last_clicked).toLocaleString() : "Never" %></div>
+        </div>
+
+        <div class="stat-item">
+            <div class="stat-label">Created At:</div>
+            <div class="stat-value"><%= new Date(link.created_at).toLocaleString() %></div>
+        </div>
+
+        <div class="stat-item">
+            <div class="stat-label">Short URL:</div>
+            <div class="stat-value">
+                <a href="/<%= link.code %>" target="_blank"><%= fullShortUrl %></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
